@@ -27,4 +27,4 @@ def index(request):
         request,
         'todo/index.html',
         context
-    )
+    ) 
