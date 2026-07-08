@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.timezone import make_aware
 from django.utils.dateparse import parse_datetime
 from todo.models import Task
@@ -28,3 +28,9 @@ def index(request):
         'todo/index.html',
         context
     )
+
+
+def delete(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    task.delete()
+    return redirect('index')
